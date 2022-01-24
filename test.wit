@@ -1,0 +1,26 @@
+record param1 {
+    a: list<u8>,
+    b: list<u8>,
+    // commenting one list field also makes this compile
+    c: list<u8>,
+}
+
+record param2 {
+    g: bool,
+    h: bool,
+    // commenting the following field makes this compile
+    i: bool,
+    j: param1,
+}
+
+record ret {
+    d: list<u8>,
+    e: list<u8>,
+    f: list<u8>,
+}
+
+enum error {
+    fatal
+}
+
+testfunc: function(p1: param1, p2: option<param2>) -> expected<ret, error>
